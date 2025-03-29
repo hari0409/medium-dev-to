@@ -1,0 +1,28 @@
+.PHONY: run jar db
+
+jar: 
+	@echo "Cleaning & Creating Jar"
+	mvn clean install
+
+db:
+	docker run -d \
+	--name springboot-mysql \
+	-e MYSQL_ROOT_PASSWORD=admin \
+	-e MYSQL_USER=admin \
+	-e MYSQL_PASSWORD=admin \
+	-p 3306:3306 \
+	-v ./data:/var/lib/mysql \
+	mysql:latest
+	@echo "Waiting for MySQL to start..."
+	@until docker exec springboot-mysql mysqladmin -u root -padmin ping >/dev/null 2>&1; do \
+		echo "Waiting for MySQL to be ready..."; \
+		sleep 2; \
+	done
+	docker exec -it springboot-mysql mysql -u root -padmin -e "CREATE DATABASE database1; CREATE DATABASE database1; CREATE DATABASE database1;"
+
+stop_db:
+	docker stop springboot-mysql && docker rm springboot-mysql
+
+run: db
+	@echo "Running Spring App"
+ 	mvn spring-boot:run
