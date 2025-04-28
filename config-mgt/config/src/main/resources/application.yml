@@ -6,10 +6,15 @@ spring:
     name: config
   profiles:
     active:
-    - native
+      - git
   cloud:
     config:
       server:
-        native:
-          search-locations:
-            - "classpath:/config"
+        git:
+          uri: https://github.com/hari0409/test.git
+          force-pull: true
+          default-label: main
+          timeout: 5
+          clone-on-start: true
+encrypt:
+  key: "1234567890qwertyui"
