@@ -1,0 +1,12 @@
+server:
+  port: 8080
+spring:
+    application:
+        name: data-validation
+    datasource:
+        url: jdbc:mysql://localhost:3306/data-validation
+        username: root
+        password: admin
+    jpa:
+        hibernate:
+            ddl-auto: update
