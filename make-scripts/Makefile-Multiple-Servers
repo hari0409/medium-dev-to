@@ -1,0 +1,21 @@
+.PHONY: gen_image gen_image_parallel run_servers stop_servers list_servers
+gen_image:
+	find . -maxdepth 1 -type d ! -path . | while read -r dir; do \
+		( cd "$$dir" && mvn compile jib:dockerBuild ); \
+	done;
+
+gen_image_parallel:
+	find . -maxdepth 1 -type d ! -path . | while read -r dir; do \
+		( cd "$$dir" && mvn compile jib:dockerBuild ) & \
+	done; 
+
+run_servers:
+	find . -maxdepth 1 -type d ! -path . | while read -r dir; do \
+		( cd "$$dir" && mvn spring-boot:run & ); \
+	done; \
+
+stop_servers:
+	ps aux | grep 'mvn spring-boot:run' | grep -v grep | awk '{print $$2}' | xargs -r kill -9
+
+list_servers:
+	ps aux | grep 'mvn spring-boot:run' | grep -v grep
