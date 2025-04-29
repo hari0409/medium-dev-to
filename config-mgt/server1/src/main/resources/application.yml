@@ -10,6 +10,15 @@ spring:
   config:
     import:
       - "optional:configserver:http://localhost:8090/"
+  cloud:
+    stream:
+      bindings:
+        sendData-out-0:
+          destination: student-data
+      kafka:
+        binder:
+          brokers:
+            - localhost:9092
 
 custom-config:
   name: My Sample Custom Config
