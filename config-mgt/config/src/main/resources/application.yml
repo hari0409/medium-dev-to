@@ -12,9 +12,9 @@ spring:
       server:
         git:
           uri: https://github.com/hari0409/test.git
-          force-pull: true
-          default-label: main
-          timeout: 5
           clone-on-start: true
+          force-pull: true
+          timeout: 5
+          default-label: main
 encrypt:
-  key: "1234567890qwertyui"
+  key: "23N8H9NXU38JN0239EB0239U98Y"

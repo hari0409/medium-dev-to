@@ -1,6 +1,5 @@
 server:
   port: 8080
-
 spring:
   application:
     name: server
@@ -10,23 +9,3 @@ spring:
   config:
     import:
       - "optional:configserver:http://localhost:8090/"
-  cloud:
-    stream:
-      bindings:
-        sendData-out-0:
-          destination: student-data
-      kafka:
-        binder:
-          brokers:
-            - localhost:9092
-
-custom-config:
-  name: My Sample Custom Config
-  object-data:
-    prop1: "Value of Prop 1"
-    prop2: "Value of Prop 2"
-    prop3: "Value of Prop 3"
-  list-data:
-    - "Value 1"
-    - "Value 2"
-    - "Value 3"
