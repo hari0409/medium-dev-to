@@ -5,6 +5,14 @@ import java.util.Map;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @ConfigurationProperties(prefix = "custom-config")
-public record CustomConfig(String name, Map<String, String> objectData, List<String> listData) {
+@Getter
+@Setter
+public class CustomConfig {
+    public String name;
+    public Map<String, String> objectData;
+    public List<String> listData;
 }

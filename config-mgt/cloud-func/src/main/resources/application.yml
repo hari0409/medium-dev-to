@@ -3,15 +3,17 @@ server:
 spring:
   application:
     name: cloudfunc
-  profiles:
-    active:
-      - default
   config:
     import:
       - "optional:configserver:http://localhost:8090/"
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    connection-timeout: 10s
 management:
   endpoints:
     web:
       exposure:
-        include:
-          - "*"
+        include: "*"

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/c1")
 @RefreshScope
 public class CloudController {
-    
+
     @Value("${appinfo.build.version}")
     private String buildInfo;
 
