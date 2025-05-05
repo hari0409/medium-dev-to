@@ -3,9 +3,12 @@ server:
 spring:
   application:
     name: server
-  profiles:
-    active:
-      - "prod"
   config:
     import:
       - "optional:configserver:http://localhost:8090/"
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "*"
