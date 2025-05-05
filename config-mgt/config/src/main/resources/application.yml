@@ -16,5 +16,20 @@ spring:
           force-pull: true
           timeout: 5
           default-label: main
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    connection-timeout: 10s
 encrypt:
   key: "23N8H9NXU38JN0239EB0239U98Y"
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "*"
+logging:
+  level:
+    root: DEBUG
