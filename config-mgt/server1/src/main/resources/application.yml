@@ -1,20 +1,45 @@
+# Server Port Configuration
 server:
   port: 8080
 spring:
   application:
     name: server
-  config:
-    import:
-      - "optional:configserver:http://localhost:8090/"
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
-    connection-timeout: 10s
+  # Config Server Configuration if any
+
+# Actuator Configuraiton
 management:
+  # Web Endpoint
   endpoints:
     web:
       exposure:
         include:
-          - "*"
+          - "info"
+  # Shutdown Endpoint
+  endpoint:
+    shutdown:
+      access: unrestricted
+  # Info Endpoint
+  info:
+    env:
+      enabled: true
+# Info ENV Config
+info:
+  app:
+    # Any set of property & value can be given
+    name: server
+    description: A Sample Server description
+    version: 2.9.3
+# Eureka Client Config
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8070/eureka
+
+# Not needed (Appn specifc required for an API)
+appinfo:
+  build:
+    version: s1:2.3

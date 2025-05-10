@@ -17,7 +17,7 @@ public class CloudController {
     private String buildInfo;
 
     @GetMapping("/build-info")
-    public ResponseEntity<?> getBuildInfo() {
+    public ResponseEntity<String> getBuildInfo() {
         return ResponseEntity.status(HttpStatus.OK).body(buildInfo);
     }
 

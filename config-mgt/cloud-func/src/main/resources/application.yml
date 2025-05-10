@@ -1,19 +1,34 @@
 server:
-  port: 9080
+  port: 8090
 spring:
   application:
     name: cloudfunc
-  config:
-    import:
-      - "optional:configserver:http://localhost:8090/"
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
-    connection-timeout: 10s
 management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include:
+          - "*"
+  endpoint:
+    shutdown:
+      access: unrestricted
+  info:
+    env:
+      enabled: true
+info:
+  app:
+    name: funkyCloud
+    description: Sample Eureka Client Server
+    version: 2.3
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8070/eureka
+
+appinfo:
+  build:
+    version: c1:2.3
