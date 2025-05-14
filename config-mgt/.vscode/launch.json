@@ -4,7 +4,6 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-    
         {
             "type": "java",
             "name": "Current File",
@@ -31,6 +30,13 @@
             "request": "launch",
             "mainClass": "com.example.server1.Server1Application",
             "projectName": "server1"
-        }
+        },
+        {
+            "type": "java",
+            "name": "GatewayserverApplication",
+            "request": "launch",
+            "mainClass": "com.example.gatewayserver.GatewayserverApplication",
+            "projectName": "gatewayserver"
+        },
     ]
 }
